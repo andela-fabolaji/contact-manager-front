@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0 auto;
+}
+
+a {
+  color: #5F5F5F;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #5F5F5F;
+}
+
+button, i {
+  cursor: pointer;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.edit {
+}
+
+.delete:hover {
+  color: red;
+}
+
+.btn {
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.btn-add {
+  background: #1E99EF;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.btn-send {
+  background: #1FD48E;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+}

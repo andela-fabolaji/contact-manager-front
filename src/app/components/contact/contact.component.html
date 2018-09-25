@@ -1,0 +1,45 @@
+<div class="header">CONTACTS ({{contacts?.length || 0}})</div>
+<div class="contents">
+  
+  <div class="list">
+    <div class="list-header">
+      Add <button (click)="showAddForm()" class="btn btn-add"> + </button>
+    </div>
+    <div class="list-item" *ngFor="let contact of contacts">
+      <div style="text-align: left">
+        <strong>{{contact?.name}}</strong>
+        <div style="text-align: left">
+          <small *ngIf="contact.category">Category: {{contact.category.name}}</small><br>
+          <small *ngIf="contact.email">Email: {{contact.email}}</small><br>
+          <small *ngIf="contact.phone">Phone: {{contact.phone}}</small>
+        </div>
+      </div>
+      <div class="options">
+        <i (click)="edit(contact)" class="far fa-edit edit"></i>&nbsp;&nbsp;
+        <i (click)="delete(contact?._id)" class="far fa-trash-alt delete"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="display">
+    <div class="add-cat-form form">
+      <h3 class="form-title">{{form.title}}</h3>
+      <input placeholder="Contact name" [(ngModel)]="form.name" type="text"/>
+      <input name="email" placeholder="Contact email" [(ngModel)]="form.email" type="email"/>
+      <input placeholder="Contact Phone" [(ngModel)]="form.phone" type="number"/>
+      <select #sel [(ngModel)]="form.category">
+        <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+      </select>
+      <div>
+        <button [disabled]="sending" *ngIf="!editingContactId" (click)="save()" class="btn btn-send">
+          <span *ngIf="!sending">Save</span>
+          <span *ngIf="sending">Loading...</span>
+        </button>
+        <button [disabled]="sending" *ngIf="editingContactId" (click)="update(editingContactId)" class="btn btn-send">
+          <span *ngIf="!sending">Update</span>
+          <span *ngIf="sending">Loading...</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
